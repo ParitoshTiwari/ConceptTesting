@@ -67,6 +67,11 @@ namespace TestingConcepts
 
         }
 
+        public void LinkedListMethods()
+        {
+            NewRegionStarted("LinkedList");
+        }
+
         public void NewRegionStarted(string region)
         {
             Console.WriteLine("------------------------------------{0} Started---------------------------", region);

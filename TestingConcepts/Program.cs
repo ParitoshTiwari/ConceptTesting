@@ -7,6 +7,8 @@ using TestingConcepts;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Reflection.Metadata;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Reflection.Metadata.BlobBuilder;
 
 public class Program
 {
@@ -40,9 +42,24 @@ public class Program
         d.QueueMethods();
         #endregion
         #region Uses and Calling of Stack
+        /// CD / DVD stand.
+        /// Stack of books in a book shop.
+        /// Undo and Redo mechanism in text editors.
+        /// The history of a web browser is stored in the form of a stack.
+        /// Call logs, E-mails, and Google photos in any gallery are also stored in form of a stack.
+        /// YouTube downloads and Notifications are also shown in LIFO format(the latest appears first).
+        /// Stack helps in managing data that follows the LIFO technique.
+        /// Stacks are be used for systematic Memory Management.
+        /// It is used in many virtual machines like JVM. When a function is called, the local variables and other function parameters are stored in the stack and automatically destroyed once returned from the function. Hence, efficient function management.
+        /// Stacks are more secure and reliable as they do not get corrupted easily.
+        /// Stack allows control over memory allocation and deallocation.
+        /// Stack cleans up the objects automatically.
         d.StackMethods();
         #endregion
         #region Uses and Calling of LinkedList
+
+        d.LinkedListMethods();
+
         #endregion
         #endregion
 
