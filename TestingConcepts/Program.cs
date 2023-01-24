@@ -75,13 +75,19 @@ public class Program
         #region Non-Linear Data Structure
 
         #endregion
-        int[][] a = new int[][] { new int[] { 7, 3 }, new int[] { 1, 3 }, new int[] { 5, 6 }, new int[] { 2, 1 }, new int[] { 1, 6 }, new int[] { 3, 7 }, 
-            new int[] { 7, 2 }, new int[] { 1, 2 }, new int[] { 7, 6 }, new int[] { 6, 3 }, new int[] { 3, 6 }, new int[] { 5, 7 }, new int[] { 5, 3 }, 
-            new int[] { 6, 4 }, new int[] { 5, 4 }, new int[] { 2, 6 }, new int[] { 7, 1 }, new int[] { 1, 4 }, new int[] { 2, 3 }, new int[] { 6, 5 }, 
+
+        #region Input for leetCode
+        int[][] a = new int[][] { new int[] { 7, 3 }, new int[] { 1, 3 }, new int[] { 5, 6 }, new int[] { 2, 1 }, new int[] { 1, 6 }, new int[] { 3, 7 },
+            new int[] { 7, 2 }, new int[] { 1, 2 }, new int[] { 7, 6 }, new int[] { 6, 3 }, new int[] { 3, 6 }, new int[] { 5, 7 }, new int[] { 5, 3 },
+            new int[] { 6, 4 }, new int[] { 5, 4 }, new int[] { 2, 6 }, new int[] { 7, 1 }, new int[] { 1, 4 }, new int[] { 2, 3 }, new int[] { 6, 5 },
             new int[] { 3, 5 }, new int[] { 3, 4 }, new int[] { 3, 1 }, new int[] { 7, 4 }, new int[] { 5, 2 }, new int[] { 2, 4 } };
-        Console.WriteLine(FindJudge(7, a));
+        Console.WriteLine(FindJudge(7, a)); 
+        #endregion
     }
 
+    public int Test { get; set; }
+
+    #region TestCodeForLeetCode
     public static int FindJudge(int n, int[][] trust)
     {
         int j = 0;
@@ -110,7 +116,7 @@ public class Program
             }
             if (count == 0)
             {
-                
+
                 var removal = elements.Where(item => item.Contains(j)).ToList();
                 List<int> ints = new List<int>();
                 foreach (var item in removal)
@@ -120,7 +126,7 @@ public class Program
                 }
 
                 var dist = ints.Distinct().ToList();
-                bool isEqual = unique.OrderBy(x=>x).SequenceEqual(dist.OrderBy(x=>x));
+                bool isEqual = unique.OrderBy(x => x).SequenceEqual(dist.OrderBy(x => x));
                 if (isEqual)
                 {
                     return j;
@@ -133,5 +139,6 @@ public class Program
         }
 
         return -1;
-    }
+    } 
+    #endregion
 }
