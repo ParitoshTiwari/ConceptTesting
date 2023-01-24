@@ -9,6 +9,8 @@ using System.Diagnostics.Metrics;
 using System.Reflection.Metadata;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Reflection.Metadata.BlobBuilder;
+using System.Xml.Linq;
+using System.Linq;
 
 public class Program
 {
@@ -57,7 +59,10 @@ public class Program
         d.StackMethods();
         #endregion
         #region Uses and Calling of LinkedList
-
+        /// Dynamic data structure: A linked list is a dynamic arrangement so it can grow and shrink at runtime by allocating and deallocating memory. So there is no need to give the initial size of the linked list.
+        /// No memory wastage: In the Linked list, efficient memory utilization can be achieved since the size of the linked list increase or decrease at run time so there is no memory wastage and there is no need to pre-allocate the memory.
+        /// Implementation: Linear data structures like stacks and queues are often easily implemented using a linked list.
+        /// Insertion and Deletion Operations: Insertion and deletion operations are quite easier in the linked list.There is no need to shift elements after the insertion or deletion of an element only the address present in the next pointer needs to be updated.
         d.LinkedListMethods();
 
         #endregion
@@ -66,5 +71,67 @@ public class Program
 
 
         #endregion
+
+        #region Non-Linear Data Structure
+
+        #endregion
+        int[][] a = new int[][] { new int[] { 7, 3 }, new int[] { 1, 3 }, new int[] { 5, 6 }, new int[] { 2, 1 }, new int[] { 1, 6 }, new int[] { 3, 7 }, 
+            new int[] { 7, 2 }, new int[] { 1, 2 }, new int[] { 7, 6 }, new int[] { 6, 3 }, new int[] { 3, 6 }, new int[] { 5, 7 }, new int[] { 5, 3 }, 
+            new int[] { 6, 4 }, new int[] { 5, 4 }, new int[] { 2, 6 }, new int[] { 7, 1 }, new int[] { 1, 4 }, new int[] { 2, 3 }, new int[] { 6, 5 }, 
+            new int[] { 3, 5 }, new int[] { 3, 4 }, new int[] { 3, 1 }, new int[] { 7, 4 }, new int[] { 5, 2 }, new int[] { 2, 4 } };
+        Console.WriteLine(FindJudge(7, a));
+    }
+
+    public static int FindJudge(int n, int[][] trust)
+    {
+        int j = 0;
+        int count = 0;
+
+        var elements = trust.ToList();
+        List<int> oneList = new List<int>();
+        foreach (var item in elements)
+        {
+            oneList.Add(item[0]);
+            oneList.Add(item[1]);
+        }
+
+        var unique = oneList.Distinct().ToList();
+
+        for (int i = 0; i < elements.Count; i++)
+        {
+            j = trust[i][1];
+            count = 0;
+            for (int k = 0; k < trust.Length; k++)
+            {
+                if (j == trust[k][0])
+                {
+                    count++;
+                }
+            }
+            if (count == 0)
+            {
+                
+                var removal = elements.Where(item => item.Contains(j)).ToList();
+                List<int> ints = new List<int>();
+                foreach (var item in removal)
+                {
+                    ints.Add(item[0]);
+                    ints.Add(item[1]);
+                }
+
+                var dist = ints.Distinct().ToList();
+                bool isEqual = unique.OrderBy(x=>x).SequenceEqual(dist.OrderBy(x=>x));
+                if (isEqual)
+                {
+                    return j;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        return -1;
     }
 }

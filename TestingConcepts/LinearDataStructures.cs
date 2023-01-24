@@ -70,6 +70,18 @@ namespace TestingConcepts
         public void LinkedListMethods()
         {
             NewRegionStarted("LinkedList");
+            LinkedList<string> list = new LinkedList<string>();
+            list.AddFirst("test");
+            list.AddLast("list1");
+            list.AddLast("list2");
+            list.AddLast("list3");
+            list.AddLast("list4");
+            list.AddLast("list5");
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         public void NewRegionStarted(string region)
